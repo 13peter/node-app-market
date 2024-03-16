@@ -10,35 +10,20 @@ const courseSchema = new Schema({
         required: true
     },
     img: String,
-
+    
     userId:{
         type: Schema.Types.ObjectId,
         ref: 'User',
-
     }
 });
 
-const Course = model('Course', courseSchema);
+courseSchema.method('toClient', function(){
+    const course = this.toObject()
+    
+    course.id = course._id
+    delete course._id
+    return course
+})
 
-module.exports = Course;
+module.exports = model('Course', courseSchema);
 
-// Assuming you have already connected to MongoDB using mongoose.connect()
-
-// const mongoose = require('mongoose');
-// const { Schema, model } = mongoose;
-
-// const courseSchema = new Schema({
-//     title: {
-//         type: String,
-//         required: true
-//     },
-//     price: {
-//         type: Number,
-//         required: true
-//     },
-//     img: String 
-// });
-
-// const Course = model('Course', courseSchema);
-
-// module.exports = Course;

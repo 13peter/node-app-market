@@ -6,13 +6,22 @@ const userSchema = new Schema({
       type: String,
       required: true
     },
-    name: {
+    name: String,
+    password: {
       type: String,
       required: true
-    },
+    },    
     cart: {
       items: [
         {
+          title: {
+            type: String,
+            required: true,
+          },
+          price: {
+            type: Number,
+            required: true
+          },
           count: {
             type: Number,
             required: true,
@@ -28,19 +37,42 @@ const userSchema = new Schema({
     }
   });
 
-  userSchema.Schema.addToCart = function(course){
-    const clonedItems = [...this.cart.items]
-    const idx = clonedItems.findIndex(c =>{
-        return c.courseId.toString()
+  userSchema.methods.addToCart = function(course){
+    const items = [...this.cart.items]
+    const idx = items.findIndex(c =>{
+        return c.courseId.toString() === course._id.toString()
     }) 
     if(idx>=0){
-       clonedItems[idx].count = this.cart.items[idx].count = +1
+      items[idx].count = this.cart.items[idx].count + 1
     }else{
-        clonedItems.push({
-            courseId:course_id
+        items.push({
+            title: course.title,
+            price: course.price,
+            courseId: course._id,
+            count: 1
         })
-        }
+     }
+     
+      this.cart = {items}
+      return this.save()
+  }
 
+  userSchema.methods.removeFromCart = function(id) {
+    let items = [...this.cart.items]
+    const idx = items.findIndex(c => c.courseId.toString() === id.toString())
+  
+    if (items[idx].count === 1) {
+      items = items.filter(c => c.courseId.toString() !== id.toString())
+    } else {
+      items[idx].count--
+    }
+  
+    this.cart = {items}
+    return this.save()
   }
   
+userSchema.methods.clearCart = function(){
+   this.cart = {items: []}
+   return this.save()
+}
 module.exports = model('User', userSchema)

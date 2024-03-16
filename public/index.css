@@ -42,17 +42,17 @@
   margin: 0!important;
 }
 
-/* Chrome, Safari, Edge, Opera */
+/* Chrome, Safari, Edge, Opera  */
 .qty-block input::-webkit-outer-spin-button,
 .qty-block input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+/* Firefox ????????????????????????????????????????????????????????????????????????????????????????????????
 .qty-block input[type=number] {
   -moz-appearance: textfield;
-}
+}*/
 
 .qty-block button{
   border: none;
@@ -84,4 +84,80 @@
 
 .course-form{
 margin-bottom: 15px;
+}
+
+.btn-box-cart {
+  display: flex;
+  justify-content: space-between;
+}
+
+#card tr th:last-child, #card tr td:last-child {
+  text-align: right;
+}
+
+.container {
+  padding-top: 50px;
+}
+
+.auth {
+  padding-top: 1rem;
+}
+
+.h3{
+  text-align: center;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite ;
+}
+
+@keyframes rotate {
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000090;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+#loader.active {
+  display: flex;
+}
+
+.alert {
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: rgba(255, 0, 0, .3);
+  color: red;
 }

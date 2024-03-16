@@ -1,43 +1,51 @@
 <h1>Корзина</h1>
+
 <div id="card">
 {{#if courses.length}}
-
-<table>
+  <table>
     <thead>
-        <tr>
-            <th>Название</th>
-            <th>Количество</th>
-            <th>Дейставия</th>
-        </tr> 
+      <tr>
+        <th>Название</th>
+        <th>Количество</th>
+        <th>Действия</th>
+      </tr>
     </thead>
     <tbody>
-        {{#each courses}}
-         <tr>
-            <td>{{title}}</td>
-            <td> 
-               <div class="qty-block">
-                    <button type="button" class="decrease-btn js-remove" data-id="{{id}}">-</button>
-                    <input type="number" class="quantity" value="{{count}}" min="1" max="100">
-                      <button type="button" class="increase-btn js-add" data-id="{{id}}">+</button>
-               </div>
-            </td>
-            <td> 
-                <button class="btn btm-small js-remove-all " data-id="{{id}}"> Удалить </button>
-            </td>
-         </tr>
-        {{/each}}
-    </tbody>
-</table>
-
-<p><strong>Цена</strong><span class="price">{{price}}</span></p>
-{{else}}
-    <p>Корзина пуста</p>
-      {{!-- {{#each courses}}
-      <img src='{{img}}'/>
-        {{title}}
-        <p class="price">{{price}}</p>
+      
+      {{#each courses}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{count}}</td>
+        <td>
+          <button 
+          class="btn btm-small js-remove" 
+          data-id="{{id}}"
+          data-csrf="{{@root.csrf}}"
+          >Удалить</button>
+        </td>
+      </tr>
       {{/each}}
+    </tbody>
+  </table>
+
+  <p><strong>Цена:</strong> <span class="price">{{price}}</span></p>
+
+  <div class="btn-box-cart">
+    <form action="/orders" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrf}}">   
+    <button type="submit" class="btn">Сделать заказ</button>
+    </form>
+
+    <button
+     type="button" 
+     class="js-remove-all btn"
+     data-id="{{id}}"
+     data-csrf="{{@root.csrf}}"
+     >Отчистить корзину</button>
+  </div>
+
+  
 {{else}}
-   <p>Cart is empty</p>  --}}
+  <p>Корзина пуста</p>
 {{/if}}
 </div>

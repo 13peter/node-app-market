@@ -1,6 +1,7 @@
 const express = require('express');
 const Course = require('../models/course');
 const { populate } = require('../models/user');
+const auth = require('../middleware/auth')
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -14,6 +15,7 @@ router.get('/', async (req, res) => {
     res.render('courses', {
       title: 'курсы',
       iscourses: true,
+      csrf: req.csrfToken(),
       courses: courses
     });
   } catch (error) {
@@ -22,7 +24,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/edit', async (req, res) => {
+router.post('/edit', auth, async (req, res) => {
   try {
     const { id } = req.body;
     delete req.body.id;
@@ -34,7 +36,7 @@ router.post('/edit', async (req, res) => {
   }
 });
 
-router.post('/remove', async (req,res) =>{
+router.post('/remove', auth, async (req,res) =>{
   try{
     await Course.deleteOne({_id: req.body.id});
     res.redirect('/courses');
@@ -61,7 +63,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', auth, async (req, res) => {
   try {
     const course = await Course.findById(req.params.id);
     res.render('course-edit', {
@@ -75,56 +77,3 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-
-
-// const express = require('express');
-// const Course = require('../models/course');
-// const router = express.Router();
-
-// router.get('/', async (req, res) => {
-//   try {
-//     const courses = await Course.find();
-//     res.render('courses', {
-//       title: 'курсы',
-//       iscourses: true, // added a comma here to separate the properties
-//       courses: courses // corrected the object property to properly pass the 'courses' array
-//     });
-//   } catch (error) {
-//     // Handle errors, perhaps send a 500 server error response
-//     res.status(500).send('Error fetching courses');
-//   }
-// });
-
-// router.post('/edit', async(req, res) => {
-//   const {id} = req.body
-//   delete req.body.id
-//   await Course.findByIdAndUpdate(id, req.body)
-
-//   res.redirect('/courses')
-// });
-
-// router.get('/:id', async (req, res) => {
-//   const course = await Course.findById(req.params.id)
-
-//   res.render('course', {
-//     layout: 'empty',
-//     title: `Kurs ${course.title}`,
-//     course
-//   })
-// });
-
-
-// router.get('/:id/edit', async (req, res) => {
-//   const course = await Course.findById(req.params.id)
-
-//   res.render('course-edit', {
-//     title: `Kurs ${course.title}`,
-//     course
-//   })
-// });
-
-// module.exports = router;
