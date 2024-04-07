@@ -1,6 +1,8 @@
 const {Router} = require('express')
 const bcrypt = require('bcryptjs')
+const crypto = require('crypto')
 const User = require('../models/user')
+const { MongoCryptInvalidArgumentError } = require('mongodb')
 const router = Router()
 
 router.get('/login', async(req, res) => {
@@ -71,4 +73,36 @@ router.post('/register', async (req,res)=>{
    console.log(e)
  }
 })
+
+// router.get('/reset',(req,res) =>{
+//   res.render('auth/reset',{
+//     title:'Забули пароль?',
+//     error: req.flash('error')
+//   })
+// })
+// router.post('/reset',(req,res) =>{
+//   try{
+//     crypto.randomBytes(32, async(err,buffer)=>{
+//      if(err){
+//       req.flash('error','Щось пійшло не так. Спробуйте будьласка пізніше.')
+//       return res.redirect('auth/reset')
+//      }
+//      const token = buffer.toString('hex')
+//      const candidate = await User.findOne({email: req.body.email})
+//      if(candidate){
+//       candidate.resetToken = token
+//       candidate.resetTokenExp = Date.now() + 60 * 60 * 1000
+//       await candidate.save()
+//       await transporter.sendMail()
+//      }else{
+//       req.flash('error','Такий email не існує')
+//       res.redirect('/auth/reset')
+//      }
+//     })
+
+//   }catch(e){
+//     console.log(e)
+//   }
+
+// })
 module.exports = router 

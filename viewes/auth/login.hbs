@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col s12">
         <ul class="tabs">
-            <li class="tab col s6"><a class="activ" href="#login">Войти</a></li>
-            <li class="tab col s6"><a href="#register">Регистрация</a></li>
+            <li class="tab col s6"><a class="activ" href="#login">Увійти</a></li>
+            <li class="tab col s6"><a href="#register">Реєстрація</a></li>
         </ul>
     </div>
 
@@ -12,23 +12,24 @@
      {{#if loginError}}
        <p class="alert">{{loginError}}</p>
      {{/if}}
-     <h3 class="h3">Войти</h3>
+     <h3 class="h3">Увійти</h3>
      <form action="/auth/login" method="POST">
      <div class="input-field">
           <input id="email" name="email" type="email" class="validate" required>
           <label for="email">Email</label>
-          <span class="helper-text" data-error="Введите email"></span>
+          <span class="helper-text" data-error="Введіть email"></span>
         </div>
 
       <div class="input-field ">
           <input id="password" name="password" type="password" class="validate" required>
           <label for="password">Пароль</label>
-          <span class="helper-text" data-error="Введите пароль"></span>
+          <span class="helper-text" data-error="Введіть пароль"></span>
         </div>  
 
         <input type="hidden" name="_csrf" value="{{csrf}}"> 
 
-      <button class="btn btn-primary" type="submit">Войти</button>
+      <p><a href="/auth/reset">Забули пароль</a></p>
+      <button class="btn btn-primary" type="submit">Увійти</button>
   </form>
     </div>
 
@@ -38,35 +39,35 @@
      {{#if registerError}}
        <p class="alert">{{registerError}}</p>
      {{/if}}
-        <h3 class="h3">Зарегистрироваться</h3> 
+        <h3 class="h3">Зареєструватись</h3> 
         <form action="/auth/register" method="POST">
       <div class="input-field">
           <input id="remail" name="email" type="email" class="validate" required>
           <label for="remail">Email</label>
-          <span class="helper-text" data-error="Введите email"></span>
+          <span class="helper-text" data-error="Введіть email"></span>
         </div>
 
       <div class="input-field ">
           <input id="rpassword" name="password" type="password" class="validate" required min="1">
           <label for="rpassword">Пароль</label>
-          <span class="helper-text" data-error="Введите пароль"></span>
+          <span class="helper-text" data-error="Введіть пароль"></span>
         </div>  
 
       <div class="input-field">
           <input  id="confirm" name="confirm" type="password" class="validate" required>
           <label for="confirm">Пароль</label>
-          <span class="helper-text" data-error="Введите пароль еще раз"></span>
+          <span class="helper-text" data-error="Введіть пароль ще раз"></span>
         </div>
 
       <div class="input-field">
           <input  id="name" name="name" type="text" class="validate" required>
-          <label for="name">Ваше имя</label>
-          <span class="helper-text" data-error="Введите имя"></span>
+          <label for="name">Ваше ім'я</label>
+          <span class="helper-text" data-error="Введіть ім'я"></span>
         </div>
       
         <input type="hidden" name="_csrf" value="{{csrf}}"> 
 
-      <button class="btn btn-primarty">Подтвердить регистрацию</button>
+      <button class="btn btn-primarty">Підтвердити реєстрацію</button>
   </form>
 
     </div>

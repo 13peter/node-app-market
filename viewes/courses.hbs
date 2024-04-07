@@ -1,5 +1,4 @@
-<h1>Курсы</h1>
-
+<h5 style="text-align: center;">Покупай та вивчай. Тут всі доступні курси які були викладені на платформі.</h5>
 {{#if courses.length}}
   {{#each courses}}
     <div class="row">
@@ -11,16 +10,24 @@
           <div class="card-content">
             <span class="card-title">{{this.title}}</span>
             <p class="price">{{this.price}}</p>
+
+            <pre>{{userId._id}} {{@root.userId}}</pre>
+
           </div>
           <div class="card-action actions" >
-            <a href="/courses/{{this.id}}" target="_blank">открыть курс</a>
+
+            <a href="/courses/{{this.id}}" target="_blank">Відкрити курс</a>
             {{#if @root.isAuth}}
-            <a href="/courses/{{this.id}}/edit?allow = true" >Редактироавть курс</a>
+
+            {{#ifeq userId._id @root.userId}}
+            <a href="/courses/{{this.id}}/edit?allow=true"> Редагувати курс</a>
+             {{/ifeq}}
+
             <form class="form-add" enctype="application/x-www-form-urlencoded">
  
               <input type="hidden" class="csrf" name="_csrf" value="{{@root.csrf}}"> 
               <input type="hidden" class="cid" name="id" value="{{id}}">
-              <button type="submit" class="btn btn-primary">купить</button>
+              <button type="submit" class="btn btn-primary">Замовити</button>
             </form>
             {{/if}}
           </div>
@@ -29,5 +36,5 @@
     </div>
   {{/each}}
 {{else}}
-  <p>Курсов пока нет</p>
+  <p>Курсів ще немає</p>
 {{/if}}

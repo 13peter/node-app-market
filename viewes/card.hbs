@@ -1,13 +1,13 @@
-<h1>Корзина</h1>
+<h3 style="text-align: center;">Кошик</h3>
 
 <div id="card">
 {{#if courses.length}}
   <table>
     <thead>
       <tr>
-        <th>Название</th>
-        <th>Количество</th>
-        <th>Действия</th>
+        <th>Назва</th>
+        <th>Кількість</th>
+        <th>Дії</th>
       </tr>
     </thead>
     <tbody>
@@ -21,19 +21,19 @@
           class="btn btm-small js-remove" 
           data-id="{{id}}"
           data-csrf="{{@root.csrf}}"
-          >Удалить</button>
+          >Видалити</button>
         </td>
       </tr>
       {{/each}}
     </tbody>
   </table>
 
-  <p><strong>Цена:</strong> <span class="price">{{price}}</span></p>
+  <p><strong>Ціна:</strong> <span class="price">{{price}}</span></p>
 
   <div class="btn-box-cart">
     <form action="/orders" method="POST">
     <input type="hidden" name="_csrf" value="{{csrf}}">   
-    <button type="submit" class="btn">Сделать заказ</button>
+    <button type="submit" class="btn">Зробити замовлення</button>
     </form>
 
     <button
@@ -41,11 +41,11 @@
      class="js-remove-all btn"
      data-id="{{id}}"
      data-csrf="{{@root.csrf}}"
-     >Отчистить корзину</button>
+     >Відчистити кошик</button>
   </div>
 
   
 {{else}}
-  <p>Корзина пуста</p>
+  <p>Кошик пуст</p>
 {{/if}}
 </div>

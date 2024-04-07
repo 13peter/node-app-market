@@ -2,24 +2,24 @@
   <form action="/add" method="POST">
     <div class="input-field">
           <input id="title" name="title" type="text" class="validate" required>
-          <label for="first_name">Название курса</label>
-          <span class="helper-text" data-error="Введите название курса"></span>
+          <label for="first_name">Назва курсу</label>
+          <span class="helper-text" data-error="Введіть назву курсу"></span>
         </div>
 
       <div class="input-field ">
           <input id="price" name="price" type="text" class="validate" required min="1">
-          <label for="price">Цена курса   
+          <label for="price">Ціна курсу   
           </label>
-          <span class="helper-text" data-error="Введите цену"></span>
+          <span class="helper-text" data-error="Введіть ціну"></span>
         </div>  
 
       <div class="input-field">
           <input  id="img" name="img" type="text" class="validate" required>
           <label for="img">URL картинки</label>
-          <span class="helper-text" data-error="Введите URL картинки"></span>
+          <span class="helper-text" data-error="Введіть URL картинки"></span>
         </div>
 
         <input type="hidden" name="_csrf" value="{{csrf}}"> 
   
-      <button class="btn btn-primarty">Добавить курс</button>
+      <button class="btn btn-primarty">Додати курс</button>
   </form>

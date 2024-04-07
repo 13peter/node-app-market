@@ -1,23 +1,23 @@
  <nav class="main-nav">
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Магазин курсів</a>
+      <a href="/" class="brand-logo">Магазин курсів lightVvin</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
         {{#if isHome}}
           <li class="active">
-            <a href="/">Главная</a>
+            <a href="/">Головна</a>
         </li>
         {{else}}
            <li>
-            <a href="/">Главная</a>
+            <a href="/">Головна</a>
         </li>
         {{/if}} 
 
         {{#if isCourses}}
-        <li class="active"><a href="/courses">Курсы</a></li>
+        <li class="active"><a href="/courses">Курси</a></li>
         {{else}}
            <li>
-            <a href="/courses">Курсы</a>
+            <a href="/courses">Курси</a>
             </li>
         {{/if}} 
 
@@ -25,38 +25,38 @@
         {{#if isAuth}}
 
           {{#if isAdd }}
-            <li class="active"><a href="/add">Добавить курс</a></li>
+            <li class="active"><a href="/add">Додати курс</a></li>
           {{else}}
              <li>
-              <a href="/add">Добавить курс</a>
+              <a href="/add">Додати курс</a>
              </li>
           {{/if}} 
 
           
            {{#if isCard }}
-             <li class="active card-nav"><a href="/card">Корзина<span class="cardCount" id="cardCount">0</span></a></li>
+             <li class="active card-nav"><a href="/card">Кошик<span class="cardCount" id="cardCount">0</span></a></li>
            {{else}}
              <li class="card-nav">
-               <a href="/card">Корзина<span class="cardCount" id="cardCount">0</span></a>
+               <a href="/card">Кошик<span class="cardCount" id="cardCount">0</span></a>
               </li>
            {{/if}} 
 
           {{#if isOrder }}
-             <li class="active card-nav"><a href="/orders">Заказы</a></li>
+             <li class="active card-nav"><a href="/orders">Замовлення</a></li>
           {{else}}
               <li class="card-nav">
-                <a href="/orders">Заказы</a>
+                <a href="/orders">Замовлення</a>
                </li>
           {{/if}} 
 
-           <li><a href="/auth/logout">Выйти</a></li> 
+           <li><a href="/auth/logout">Вийти</a></li> 
 
         {{else}}
             {{#if isLogin }}
-              <li class="active card-nav"><a href="/auth/login#login">Войти</a></li>
+              <li class="active card-nav"><a href="/auth/login#login">Увійти</a></li>
            {{else}}
               <li class="card-nav">
-                 <a href="/auth/login#login">Войти</a>
+                 <a href="/auth/login#login">Увійти</a>
                </li>
             {{/if}}
 

@@ -21,6 +21,7 @@ const app = express();
 const hbs = exphbs.create({
   defaultLayout: 'main',
   extname: 'hbs',
+  helpers: require('./utils/hbs-helpers'), // Adjusted require path
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
     allowProtoMethodsByDefault: true,
