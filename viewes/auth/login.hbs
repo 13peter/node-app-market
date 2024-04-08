@@ -1,4 +1,8 @@
-<div class="auth">
+<section class="product-detail section-padding">
+                <div class="container">
+                    <div class="row">
+                      
+                      <div class="auth">
   <div class="row">
     <div class="col s12">
         <ul class="tabs">
@@ -14,14 +18,14 @@
      {{/if}}
      <h3 class="h3">Увійти</h3>
      <form action="/auth/login" method="POST">
-     <div class="input-field">
-          <input id="email" name="email" type="email" class="validate" required>
+     <div class="form-floating">
+          <input id="email" name="email" type="email" class="validate form-control" required>
           <label for="email">Email</label>
           <span class="helper-text" data-error="Введіть email"></span>
         </div>
 
-      <div class="input-field ">
-          <input id="password" name="password" type="password" class="validate" required>
+      <div class="form-floating my-4">
+          <input id="password" name="password" type="password" class="validate form-control" required>
           <label for="password">Пароль</label>
           <span class="helper-text" data-error="Введіть пароль"></span>
         </div>  
@@ -29,7 +33,7 @@
         <input type="hidden" name="_csrf" value="{{csrf}}"> 
 
       <p><a href="/auth/reset">Забули пароль</a></p>
-      <button class="btn btn-primary" type="submit">Увійти</button>
+      <button class="btn custom-btn cart-btn" type="submit">Увійти</button>
   </form>
     </div>
 
@@ -41,35 +45,39 @@
      {{/if}}
         <h3 class="h3">Зареєструватись</h3> 
         <form action="/auth/register" method="POST">
-      <div class="input-field">
-          <input id="remail" name="email" type="email" class="validate" required>
+      <div class="form-floating">
+          <input id="remail" name="email" type="email" class="validate form-control" required>
           <label for="remail">Email</label>
           <span class="helper-text" data-error="Введіть email"></span>
         </div>
 
-      <div class="input-field ">
-          <input id="rpassword" name="password" type="password" class="validate" required min="1">
+      <div class="form-floating my-4">
+          <input id="rpassword" name="password" type="password" class="validate form-control" required min="1">
           <label for="rpassword">Пароль</label>
           <span class="helper-text" data-error="Введіть пароль"></span>
         </div>  
 
-      <div class="input-field">
-          <input  id="confirm" name="confirm" type="password" class="validate" required>
+      <div class="form-floating my-4">
+          <input  id="confirm" name="confirm" type="password" class="validate form-control" required>
           <label for="confirm">Пароль</label>
           <span class="helper-text" data-error="Введіть пароль ще раз"></span>
         </div>
 
-      <div class="input-field">
-          <input  id="name" name="name" type="text" class="validate" required>
+      <div class="form-floating my-4">
+          <input  id="name" name="name" type="text" class="validate  form-control" required>
           <label for="name">Ваше ім'я</label>
           <span class="helper-text" data-error="Введіть ім'я"></span>
         </div>
       
         <input type="hidden" name="_csrf" value="{{csrf}}"> 
 
-      <button class="btn btn-primarty">Підтвердити реєстрацію</button>
+      <button class="btn custom-btn cart-btn">Зареєструватись</button>
   </form>
 
     </div>
   </div>
 </div>
+
+                    </div>
+                </div>
+</section>

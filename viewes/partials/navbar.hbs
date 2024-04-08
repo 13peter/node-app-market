@@ -1,67 +1,85 @@
- <nav class="main-nav">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Магазин курсів lightVvin</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        
-        {{#if isHome}}
-          <li class="active">
-            <a href="/">Головна</a>
-        </li>
-        {{else}}
-           <li>
-            <a href="/">Головна</a>
-        </li>
-        {{/if}} 
 
-        {{#if isCourses}}
-        <li class="active"><a href="/courses">Курси</a></li>
-        {{else}}
-           <li>
-            <a href="/courses">Курси</a>
-            </li>
-        {{/if}} 
+      
+        <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
+                    <a class="navbar-brand" href="/">
+                        <strong><span>Lytvyn</span> Courses</strong>
+                    </a>
 
-        {{#if isAuth}}
+                    <div class="d-lg-none">
+                        <a href="/auth/login" class="bi-person custom-icon me-3"></a>
 
-          {{#if isAdd }}
-            <li class="active"><a href="/add">Додати курс</a></li>
-          {{else}}
-             <li>
-              <a href="/add">Додати курс</a>
-             </li>
-          {{/if}} 
+                        <a href="product-detail.html" class="bi-bag custom-icon"></a>
+                    </div>
 
-          
-           {{#if isCard }}
-             <li class="active card-nav"><a href="/card">Кошик<span class="cardCount" id="cardCount">0</span></a></li>
-           {{else}}
-             <li class="card-nav">
-               <a href="/card">Кошик<span class="cardCount" id="cardCount">0</span></a>
-              </li>
-           {{/if}} 
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
 
-          {{#if isOrder }}
-             <li class="active card-nav"><a href="/orders">Замовлення</a></li>
-          {{else}}
-              <li class="card-nav">
-                <a href="/orders">Замовлення</a>
-               </li>
-          {{/if}} 
+                      {{#if isHome}}
+                        <li class="nav-item">
+                          <a class="nav-link active" href="/">Головна</a>
+                        </li>
+                      {{else}}
+                        <li class="nav-item">
+                          <a class="nav-link" href="/">Головна</a>
+                        </li>
+                      {{/if}} 
+                      {{#if isCourses}}
+                      <li class="nav-item"><a class="nav-link active" href="/courses">Курси</a></li>
+                      {{else}}
+                          <li class="nav-item"><a class="nav-link" href="/courses">Курси</a></li>
+                      {{/if}} 
 
-           <li><a href="/auth/logout">Вийти</a></li> 
+                      {{#if isAuth}}
+                        {{#if isAdd }}
+                          <li class="nav-item">
+                            <a class="nav-link active" href="/add">Додати курс</a>
+                          </li>
+                        {{else}}
+                            <li class="nav-item">
+                            <a class="nav-link" href="/add">Додати курс</a>
+                          </li>
+                        {{/if}} 
 
-        {{else}}
-            {{#if isLogin }}
-              <li class="active card-nav"><a href="/auth/login#login">Увійти</a></li>
-           {{else}}
-              <li class="card-nav">
-                 <a href="/auth/login#login">Увійти</a>
-               </li>
-            {{/if}}
+                        {{#if isOrder }}
+                            <li class="nav-item">
+                            <a class="nav-link active" href="/orders">Замовлення</a>
+                          </li>
+                        {{else}}
+                            <li class="nav-item">
+                            <a class="nav-link" href="/orders">Замовлення</a>
+                          </li>
+                        {{/if}} 
+                      {{/if}} 
+                            
+                        </ul>
 
-        {{/if}} 
-      </ul>
-    </div>
-  </nav>
-        
+                        <div class="d-none d-lg-block">
+                            {{#if isAuth}}
+                            
+                                <a href="/auth/logout">
+                                <img src="/images/logout.svg" width='30'>
+                                 </a> 
+                              
+ 
+                                <a href="/card">
+                                <img src="/images/cart.svg" width='30'>
+                                <span class="cardCount" id="cardCount"></span>
+                                </a>
+       
+                            {{else}}
+ 
+                                  <a href="/auth/login">
+                                    <img src="/images/user.svg" width='30'>
+                                  </a>
+   
+                            {{/if}}
+                            
+                        </div>
+                    </div>
+                </div>
+            </nav>

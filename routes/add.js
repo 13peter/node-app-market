@@ -1,16 +1,16 @@
-const {Router} = require('express')
+const { Router } = require('express')
 const Course = require('../models/course')
 const auth = require('../middleware/auth')
 const router = Router()
 
-router.get('/', auth, (req, res)=>{
-    res.render('add',{
-        title:'добавить курс',
-        isAdd: true
-      })
-    })
- 
-router.post('/', auth, async(req, res) => {
+router.get('/', auth, (req, res) => {
+  res.render('add', {
+    title: 'Додати курс',
+    isAdd: true
+  })
+})
+
+router.post('/', auth, async (req, res) => {
   // const course = new Course(req.body.title, req.body.price, req.body.img)
   const course = new Course({
     title: req.body.title,
@@ -19,15 +19,15 @@ router.post('/', auth, async(req, res) => {
     userId: req.user._id
   })
 
-  try{
+  try {
     await course.save()
-  } catch(err){
+  } catch (err) {
     console.log(err)
   }
-  
+
 
 
   res.redirect('/courses')
 })
 
-module.exports = router;
+module.exports = router

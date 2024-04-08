@@ -1,7 +1,51 @@
-<h1>Курс {{course.title}}</h1>
+<section class="product-detail section-padding">
+                <div class="container">
+                    <div class="row">
 
-<p>
-  {{course.price}}
-</p>
+                        <div class="col-lg-6 col-12">
+                            <div class="product-thumb">
+                                <img src="{{course.img}}" class="img-fluid product-image" alt="">
+                            </div>
+                        </div>
 
-<img src="{{course.img}}">
+                        <div class="col-lg-6 col-12">
+                            <div class="product-info d-flex">
+                                <div>
+                                    <h2 class="product-title mb-0">{{course.title}}</h2>
+
+                                    <p class="product-p">Original package design from house</p>
+                                </div>
+
+                                <small class="product-price text-muted ms-auto mt-auto mb-5 price">{{course.price}}</small>
+                            </div>
+
+                            <div class="product-description">
+
+                                <strong class="d-block mt-4 mb-2">Description</strong>
+
+                                <p class="lead mb-5">Over three years in business, We’ve had the chance to work on a variety of projects, with companies</p>
+                            </div>
+
+                            <div class="product-cart-thumb row">
+                     
+
+                                <div class="col-lg-6 col-12 mt-4 mt-lg-0">
+                                    <form class="form-add" enctype="application/x-www-form-urlencoded">
+                                    <input type="hidden" class="csrf" name="_csrf" value="{{@root.csrf}}"> 
+                                    <input type="hidden" class="cid" name="id" value="{{course.id}}">
+                                    <button type="submit" class="btn custom-btn cart-btn">Купити</button>
+                                  </form>
+                                </div>
+
+                                <p>
+                                    <a href="#" class="product-additional-link">Details</a>
+
+                                    <a href="#" class="product-additional-link">Delivery and Payment</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
