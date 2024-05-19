@@ -12,11 +12,17 @@ router.get('/', auth, (req, res) => {
 
 router.post('/', auth, async (req, res) => {
   // const course = new Course(req.body.title, req.body.price, req.body.img)
+
+  console.log(req.file.filename)
+
+
   const course = new Course({
     title: req.body.title,
+    description: req.body.description,
     price: req.body.price,
     img: req.body.img,
-    userId: req.user._id
+    userId: req.user._id,
+    courseFile: req.file.filename
   })
 
   try {
@@ -24,8 +30,6 @@ router.post('/', auth, async (req, res) => {
   } catch (err) {
     console.log(err)
   }
-
-
 
   res.redirect('/courses')
 })

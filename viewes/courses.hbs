@@ -1,11 +1,12 @@
 <header class="site-header section-padding d-flex justify-content-center align-items-center">
                 <div class="container">
                     <div class="row">
-
+                   
                         <div class="col-lg-10 col-12">
                             <h1>
-                                <span class="text-primary">Обери свій</span>
-                                <span class="text-dark">КУРС</span>
+                                <span class="text-primary">Оберіть свій</span>
+                                <span class="text-dark">КУРС
+                                </span>
                             </h1>
                         </div>
                     </div>
@@ -34,16 +35,19 @@
                                             <a href="product-detail.html" class="product-title-link">{{this.title}}</a>
                                             
                                         </h5>
+                                            <form class="form-add" enctype="application/x-www-form-urlencoded">
+                                                <input type="hidden" class="csrf" name="_csrf" value="{{@root.csrf}}"> 
+                                                <input type="hidden" class="cid" name="id" value="{{id}}">
+                                                
+                                                    
+                                              {{#if @root.userAuthed}}
+                                                    <button type="submit" class="btn custom-btn cart-btn">Купити</button>
+                                                {{/if}}
 
-            <form class="form-add" enctype="application/x-www-form-urlencoded">
-              <input type="hidden" class="csrf" name="_csrf" value="{{@root.csrf}}"> 
-              <input type="hidden" class="cid" name="id" value="{{id}}">
-              <button type="submit" class="btn custom-btn cart-btn">Купити</button>
-            </form>
-                                        {{!-- <p class="product-p">          <pre>{{userId._id}} {{@root.userId}}</pre></p> --}}
+                                            </form>     
+                                                        
                                         <p>
-                                            <a href="/courses/{{this.id}}/edit?allow=true">Редагувати курс</a>
-                                          {{#ifeq userId._id @root.userId}}
+                                        {{#ifeq this.userId._id @root.userAuthed}}
                                             <a href="/courses/{{this.id}}/edit?allow=true">Редагувати курс</a>
                                         {{/ifeq}}
                                         </p>

@@ -1,5 +1,8 @@
+
 function priceFormat() {
   document.querySelectorAll('.price').forEach(node => {
+    node.setAttribute('price', node.textContent)
+    
     node.textContent = new Intl.NumberFormat('ru-Ru', {
       currency: 'uah',
       style: 'currency'
@@ -22,6 +25,17 @@ const toDate = date => {
 document.querySelectorAll('.date').forEach(node => {
   node.textContent = toDate(node.textContent)
 })
+
+ 
+function purchaseClicked(){
+  var priceElement = document.getElementsByClassName('price')[0]
+  var price = parseFloat(priceElement.innerText.replace('$','')) 
+  stripeHandler.open({
+    amount: price
+  })
+}
+
+
 
 const $card = document.querySelector('#card')
 if ($card) {
@@ -66,7 +80,7 @@ if ($card) {
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                
                 <p class="text-start text-md-center d-flex justify-content-end">
-                  <button class="btn btm-small js-remove" data-id="${c.id}" data-csrf="6y0yHnBA-cVk76U8HPIahZT-GppTLDUArMLc">
+                  <button class="btn btm-small js-remove" data-id="${c.id}" data-csrf="${_csrf}">
                   <img src="/images/delete.svg" width="30" class="pe-none">
                   </button>
                 </p>
@@ -74,7 +88,7 @@ if ($card) {
               </div>
             </div>`}).join('')
             $card.querySelector('.card-body').innerHTML = html
-            $card.querySelector('.price').textContent = card.price
+            $card.querySelector('.price-total').textContent = card.price
             priceFormat()
           } else {
             $card.innerHTML = '<h2><center>У кошику пусто</center></h2>' // Corrected: Use single quotes for the HTML string

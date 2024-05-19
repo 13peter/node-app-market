@@ -5,11 +5,12 @@
                         <div class="col-lg-10 col-12">
                             <h1>
                                 <span class="text-primary">Кошик</span>
+                               
                             </h1>
                         </div>
                     </div>
                 </div>
-            </header>
+</header>
 
               <section class="section-padding">
                 <div class="container">
@@ -96,9 +97,6 @@
             <img class="me-2" width="45px"
               src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
               alt="Mastercard" />
-            <img class="me-2" width="45px"
-              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
-              alt="PayPal acceptance mark" />
           </div>
         </div>
       </div>
@@ -114,14 +112,20 @@
                 <div>
                   <strong>До сплати</strong>
                 </div>
-                <span><strong class='price'>{{price}}</strong></span>
+                <span><strong class='price price-total'>{{price}}</strong></span>
               </li>
             </ul>
 
-             <form action="/orders" method="POST">
+             {{!-- <form action="/orders" method="POST">
               <input type="hidden" name="_csrf" value="{{csrf}}">   
               <button type="submit" class="btn btn-primary btn-lg btn-block">Зробити замовлення</button>
-              </form>
+              </form> --}}
+              
+             
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="stripeClick()">Зробити замовлення</button>
+
+              
           </div>
         </div>
       </div>
@@ -132,6 +136,7 @@
 {{else}}
   <h2><center>У кошику пусто</center></h2>
 {{/if}}
+ 
 
 </div>
                     </div>

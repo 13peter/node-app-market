@@ -23,10 +23,15 @@
                             <div class="accordion-body">
                                 <p class="large-paragraph">Замовник: <em>{{user.userId.name}}</em> - {{user.userId.email}}</p>
                                 <p>Ціна: <span class="price">{{price}}</span></p>
+    
+                                
                                 <hr>
                                 <ol>
                                     {{#each courses}}
-                                        <li>{{course.title}} (x<strong>{{count}}</strong>)</li>
+                                        <li>
+                                            {{course.title}} (<strong>{{count}}</strong>) 
+                                            <a href="/files/{{ course.courseFile }}" download>Завантажити курс </a>
+                                        </li>
                                     {{/each}}
                                 </ol>
                             </div>
@@ -34,7 +39,7 @@
                     </div>
                 {{/each}}
             {{else}}
-                <p>Замовлинь ще немає</p>
+                <p>Замовлень ще немає</p>
             {{/if}}
         </div>
     </div>

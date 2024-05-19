@@ -1,8 +1,7 @@
 const { Router } = require('express')
 const Order = require('../models/order')
 const auth = require('../middleware/auth')
-// const order = require('../models/order');
-const { populate } = require('../models/course')
+// const { populate } = require('../models/course')
 const router = Router()
 
 router.get('/', auth, async (req, res) => {
@@ -12,7 +11,7 @@ router.get('/', auth, async (req, res) => {
 
         res.render('orders', {
             isOrder: true,
-            title: 'Заказы',
+            title: 'Замовлення',
             orders: orders.map(o => {
                 return {
                     ...o._doc,
@@ -52,6 +51,5 @@ router.post('/', auth, async (req, res) => {
     } catch (e) {
         console.log(e)
     }
-
-})
+});
 module.exports = router 
